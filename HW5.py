@@ -28,18 +28,18 @@ with open('Python_HW5/sjat.txt', 'r', encoding='utf-8') as R:
 def Sjat(N):  
         K = 0
         strN = ""
-        for i in range(K, len(N)):
-            if N[K] != N[i]:
-                strN += ((f'{i-K} {N[i-1]},'))
+        for i in range(K, len(M)):
+            if M[K] != M[i]:
+                strN += ((f'{i-K} {M[i-1]},'))
                 K = i
-        strN += ((f'{i-K+1} {N[i-1]}'))
+        strN += ((f'{i-K+1} {M[i-1]}'))
         print(strN)
-        with open('Python_HW5/RECOV.txt', 'w', encoding='utf-8') as W:
+        with open('Python_HW5/recovery.txt', 'w', encoding='utf-8') as W:
             P = W.write(strN) 
            
 
 
-with open('Python_HW5/RECOV.txt', 'r', encoding='utf-8') as R:
+with open('Python_HW5/recovery.txt', 'r', encoding='utf-8') as R:
     N = R.read().split(',')
 def Recov(N):
     with open('Python_HW5/sjat.txt', 'w', encoding='utf-8') as W:
@@ -54,8 +54,6 @@ def Recov(N):
                 P = W.write(strN)
             print(strN, end='')
     
-
-
 if Mode == 1:
     Sjat(M)
 else:
