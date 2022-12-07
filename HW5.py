@@ -20,12 +20,13 @@ zone3 = ['-','-','-']
 print(zone1,zone2,zone3,sep='\n')
 R = 9
 def kr(R):
-    for i in range(R-9, R):
-        X = int(input('Введите номер ячейки... '))
+    for i in range(R-7, R):        
         if i % 2 == 0 :
             S = 'X'
         else:
             S = 'O'
+        print('Ходит', S)
+        X = int(input('Введите номер ячейки... '))
         if 0 < X < 4:
             if X == 1 and zone1[0] == '-':       
                 zone1[0] = S
@@ -35,7 +36,7 @@ def kr(R):
                 zone1[2] = S
             else:
                 print('Занято, ввидете другое число...')
-                return kr(R+1)
+                return kr(i-1)
         elif 3 < X <7:
             if X == 4 and zone2[0] == '-':       
                 zone2[0] = S
@@ -45,7 +46,7 @@ def kr(R):
                 zone2[2] = S
             else:
                 print('Занято, ввидете другое число...')
-                return kr(R)
+                return kr(i-1)
         elif 6 < X < 10:
             if X == 7 and zone3[0] == '-':       
                 zone3[0] = S
@@ -55,8 +56,23 @@ def kr(R):
                 zone3[2] = S
             else:
                 print('Занято, ввидете другое число...')
-                return kr(R)
-    
+                return kr(i-1)
+        else:
+            print('Нет такой ячейки! Введите заного...')
+            return kr(i-1)
+        for j in range(2):
+            if zone1[j] == S and zone2[j] == S and zone3[j] == S:
+                print(zone1,zone2,zone3, sep='\n')
+                print('Победили', S)
+                exit()
+        if zone1[0] == S and zone2[1] == S and zone3[2] == S:
+                print(zone1,zone2,zone3, sep='\n')
+                print('Победили', S)
+                exit()
+        elif zone1[2] == S and zone2[1] == S and zone3[0] == S:
+                print(zone1,zone2,zone3, sep='\n')
+                print('Победили', S)
+                exit()
         print(zone1,zone2,zone3, sep='\n')
 kr(R)
 # 3. Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
